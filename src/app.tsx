@@ -1,40 +1,28 @@
-import getPlaylists from "./utils/get-playlist-links";
+import renderPlaylistImages from "./utils/render-playlist-images";
+import getAllPlaylistData from "./utils/get-all-playlists";
+import { getElement } from "./utils/get-playlist-links";
 
-import { TEMP_DATA } from "./temp/TEMP_DATA";
+import './assets/css/styles.scss';
 
 async function main() {
   while (!Spicetify?.Platform || !Spicetify?.CosmosAsync) {
     await new Promise(resolve => setTimeout(resolve, 100));
   }
 
-  // const res: SpotifyApi.ListOfCurrentUsersPlaylistsResponse = await Spicetify.CosmosAsync.get('https://api.spotify.com/v1/me/playlists?limit=50');
-  const res: SpotifyApi.ListOfCurrentUsersPlaylistsResponse = TEMP_DATA;
-  // console.log('thing', res)
+  const res = await getAllPlaylistData('https://api.spotify.com/v1/me/playlists?limit=50');
 
-  const playlistAnchors = await getPlaylists();
-  console.log(playlistAnchors)
+  await renderPlaylistImages(res);
 
-  Array.from(playlistAnchors).forEach(async (playlistAnchor, i) => {
-    if (i === 2) {
-      const id = playlistAnchor.href.split('/').at(-1);
-      const type = playlistAnchor.href.split('/').at(-2);
+  const playlistElement = await getElement('#spicetify-playlist-list')
+  const observer = new MutationObserver(async () => {
+    // Needed to prevent an infinite looooooooooooooooooooooooooooooooooooooooooooooop
+    observer.disconnect();
 
-      if (type === 'playlist') {
-        const playlistData = res.items.find(playlist => playlist.id === id);
-        
-        const img = document.createElement('img');
-        img.setAttribute('src', playlistData?.images[0].url as string); // Dirty
-        img.style.width = '2em';
-        img.style.height = 'auto';
+    await renderPlaylistImages(res);
 
-        // TODO mutation observer or something. Gets derendered when out of view
-        playlistAnchor.parentElement?.prepend(img);
-        
-        // const res = await Spicetify.CosmosAsync.get(`https://api.spotify.com/v1/playlists/${id}`);
-        // console.log(res);
-      }
-    }
+    observer.observe(playlistElement, { childList: true, subtree: true });
   });
+  observer.observe(playlistElement, { childList: true, subtree: true });
 }
 
 export default main;
