@@ -1,16 +1,24 @@
-# Spicetify Creator
+# Playlist icons
+Spicetify extension to add the icon of a playlist in front of the playlist the playlist list.  
+Small and big icons setting available.  
+![playlist icons small](./docs/playlist-icons-small.png)
+![playlist icons big](./docs/playlist-icons-big.png)
 
-Spicetify Creator is a tool to compile modern Typescript/Javascript code to Spicetify extensions and custom apps.
+## Installation
+Install via [spicetify-marketplace](https://github.com/CharlieS1103/spicetify-marketplace)
 
-## Features
-- Typescript and React syntax
-- Import node packages
-- CSS/SCSS with PostCSS support
-- Extremely fast compile time with esbuild.
-- Plugins
+Or the manual way:  
+Copy `playlist-icons.js` (from the [dist](/dist/) folder) to the spicetify extenstions folder
+| **Platform**    | **Path**                               |
+|-----------------|----------------------------------------|
+| **MacOs/Linux** | `~/.config/spicetify/Extensions`       |
+| **Windows**     | `%userprofile%/.spicetify/Extensions/` |
 
-## Docs
-Check out [Spicetify's docs](https://spicetify.app/docs/development/spicetify-creator/the-basics)!
+Run the following commands
+```sh
+spicetify config extensions playlist-icons.js
+spicetify apply
+```
 
-## Made with Spicetify Creator
-- https://github.com/FlafyDev/spotify-css-editor
+## Known issues
+Big icons cause the list to grow out of its container, making it impossible to see/click the bottom playlists.
