@@ -1,9 +1,13 @@
+import React from "react";
+import ReactDOM from "react-dom";
 import createPlaylistIconElement from "./create-img";
 import getPlaylistAnchors from "./get-playlist-links";
 
+import FolderImage from '../components/FolderImage';
+
 const imgMap = new Map<string, HTMLImageElement | HTMLDivElement>();
 
-export default async function renderPlaylistImages(items: SpotifyApi.PlaylistObjectSimplified[]) {
+export async function renderPlaylistImages(items: SpotifyApi.PlaylistObjectSimplified[]) {
     const playlistAnchors = await getPlaylistAnchors();
 
     playlistAnchors.forEach((playlistAnchor) => {
@@ -29,12 +33,14 @@ export default async function renderPlaylistImages(items: SpotifyApi.PlaylistObj
                 break;
             }
             case 'folder': {
-                const img = createPlaylistIconElement('http://127.0.0.1:5500/folder_white_24dp.svg');
-                img.classList.add('folder');
+                const iconWrapper = document.createElement('div');
+                iconWrapper.classList.add('playlist-item__img', 'folder');
 
-                playlistAnchor.parentElement?.prepend(img);
+                ReactDOM.render(<FolderImage/>, iconWrapper);
 
-                imgMap.set(id, img);
+                playlistAnchor.parentElement?.prepend(iconWrapper);
+
+                imgMap.set(id, iconWrapper);
                 break;
             }
             default: {
@@ -42,4 +48,9 @@ export default async function renderPlaylistImages(items: SpotifyApi.PlaylistObj
             }
         }
     });
+}
+
+export async function deRenderPlaylistIcons() {
+    Array.from(document.getElementsByClassName('playlist-item__img')).forEach(img => img.remove());
+    Array.from(document.getElementsByClassName('playlist-item')).forEach(item => item.classList.remove('playlist-item'));
 }
