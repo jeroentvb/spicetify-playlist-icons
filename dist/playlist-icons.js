@@ -170,7 +170,7 @@ if (x === "react-dom") return Spicetify.ReactDOM;
       var el = document.createElement('style');
       el.id = `playlistDicons`;
       el.textContent = (String.raw`
-  /* ../../../../../var/folders/6k/z8twsw_s37dffkznr8h11rl40000gn/T/tmp-5427-kRVrfermuY75/17ee48aebd80/styles.css */
+  /* ../../../../../var/folders/6k/z8twsw_s37dffkznr8h11rl40000gn/T/tmp-2536-SQpmoIRkDrf2/17ee7b9e49c0/styles.css */
 :root {
   ---playlist-img-spacing: 6px;
 }
@@ -218,6 +218,9 @@ if (x === "react-dom") return Spicetify.ReactDOM;
 .big-icons .playlist-item__img.folder svg {
   width: 1.5em;
   height: 1.5em;
+}
+.big-icons > div {
+  contain: unset;
 }
 
       `).trim();

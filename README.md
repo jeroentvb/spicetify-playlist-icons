@@ -19,6 +19,3 @@ Run the following commands
 spicetify config extensions playlist-icons.js
 spicetify apply
 ```
-
-## Known issues
-Big icons cause the list to grow out of its container, making it impossible to see/click the bottom playlists.

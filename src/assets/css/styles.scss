@@ -59,4 +59,9 @@
             }
         }
     }
+
+    // Fix not being unable to scroll to the bottom
+    &> div {
+        contain: unset;
+    }
 }
