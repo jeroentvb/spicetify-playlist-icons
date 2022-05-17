@@ -5,7 +5,6 @@ var playlistDicons = (() => {
   var __getOwnPropNames = Object.getOwnPropertyNames;
   var __getProtoOf = Object.getPrototypeOf;
   var __hasOwnProp = Object.prototype.hasOwnProperty;
-  var __markAsModule = (target) => __defProp(target, "__esModule", { value: true });
   var __require = /* @__PURE__ */ ((x) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x, {
     get: (a, b) => (typeof require !== "undefined" ? require : a)[b]
   }) : x)(function(x) {
@@ -15,17 +14,15 @@ if (x === "react-dom") return Spicetify.ReactDOM;
       return require.apply(this, arguments);
     throw new Error('Dynamic require of "' + x + '" is not supported');
   });
-  var __reExport = (target, module, copyDefault, desc) => {
-    if (module && typeof module === "object" || typeof module === "function") {
-      for (let key of __getOwnPropNames(module))
-        if (!__hasOwnProp.call(target, key) && (copyDefault || key !== "default"))
-          __defProp(target, key, { get: () => module[key], enumerable: !(desc = __getOwnPropDesc(module, key)) || desc.enumerable });
+  var __copyProps = (to, from, except, desc) => {
+    if (from && typeof from === "object" || typeof from === "function") {
+      for (let key of __getOwnPropNames(from))
+        if (!__hasOwnProp.call(to, key) && key !== except)
+          __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
     }
-    return target;
+    return to;
   };
-  var __toESM = (module, isNodeMode) => {
-    return __reExport(__markAsModule(__defProp(module != null ? __create(__getProtoOf(module)) : {}, "default", !isNodeMode && module && module.__esModule ? { get: () => module.default, enumerable: true } : { value: module, enumerable: true })), module);
-  };
+  var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", { value: mod, enumerable: true }) : target, mod));
 
   // src/utils/render-playlist-images.tsx
   var import_react2 = __toESM(__require("react"));
@@ -170,7 +167,7 @@ if (x === "react-dom") return Spicetify.ReactDOM;
       var el = document.createElement('style');
       el.id = `playlistDicons`;
       el.textContent = (String.raw`
-  /* ../../../../../var/folders/6k/z8twsw_s37dffkznr8h11rl40000gn/T/tmp-2536-SQpmoIRkDrf2/17ee7b9e49c0/styles.css */
+  /* ../../../../../var/folders/6k/z8twsw_s37dffkznr8h11rl40000gn/T/tmp-4683-NIvHuDNjM6lL/180d27a2f610/styles.css */
 :root {
   ---playlist-img-spacing: 6px;
 }
