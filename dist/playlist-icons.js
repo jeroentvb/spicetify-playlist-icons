@@ -177,9 +177,9 @@ if (x === "react-dom") return Spicetify.ReactDOM;
   align-items: center;
 }
 .playlist-item__img {
+  border-radius: 10%;
   width: 1.5em;
   height: 1.5em;
-  border-radius: 1px;
   margin-right: 12px;
   filter: brightness(85%);
 }
@@ -195,7 +195,7 @@ if (x === "react-dom") return Spicetify.ReactDOM;
 }
 .playlist-item__img.no-icon {
   background-color: var(--spice-tab-active);
-  height: 2em;
+  height: 1.5em;
 }
 .playlist-item:hover .playlist-item__img {
   transition: 0.2s ease-out;
@@ -206,8 +206,9 @@ if (x === "react-dom") return Spicetify.ReactDOM;
   padding-bottom: var(---playlist-img-spacing);
 }
 .big-icons .playlist-item__img {
-  width: 2em;
-  height: 2em;
+  border-radius: 10%;
+  width: 2.2em;
+  height: 2.2em;
 }
 .big-icons .playlist-item__img.folder {
   padding: 4px;
