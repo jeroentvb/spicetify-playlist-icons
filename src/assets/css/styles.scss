@@ -10,7 +10,7 @@
     &__img {
         width: 1.5em;
         height: 1.5em;
-        border-radius: 1px;
+        border-radius: 2px;
         margin-right: 12px;
         
         filter: brightness(85%);
@@ -29,7 +29,7 @@
 
         &.no-icon {
             background-color: var(--spice-tab-active);
-            height: 2em;
+            height: 1.5em;
         }
     }
 
@@ -37,7 +37,6 @@
         transition: 0.2s ease-out;
         filter: brightness(100%);
     }
-    
 }
 
 .big-icons {
@@ -46,6 +45,7 @@
         padding-bottom: var(---playlist-img-spacing);
     
         &__img {
+            border-radius: 4px;
             width: 2em;
             height: 2em;
 
