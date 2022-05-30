@@ -4,15 +4,18 @@
   "private": true,
   "scripts": {
     "build": "spicetify-creator",
-    "build-local": "spicetify-creator --out=dist",
+    "build:local": "spicetify-creator --out=dist",
+    "build:prod": "npm run build:local && npm run copy:docs",
+    "copy:docs": "copyfiles README.md docs/* dist/",
     "watch": "spicetify-creator --watch",
-    "watch-local": "spicetify-creator --watch --out=dist"
+    "watch:local": "spicetify-creator --watch --out=dist"
   },
   "license": "MIT",
   "devDependencies": {
     "@types/react": "^18.0.9",
     "@types/react-dom": "^18.0.4",
     "@types/spotify-api": "^0.0.16",
+    "copyfiles": "^2.4.1",
     "spicetify-creator": "^1.0.10"
   }
 }

@@ -2,7 +2,8 @@
     "name": "Playlist icons",
     "description": "Add playlist icons to the playlist list",
     "preview": "docs/playlist-icons-small.png",
-    "main": "dist/playlist-icons.js",
+    "main": "playlist-icons.js",
     "readme": "README.md",
-    "authors": [{ "name": "jeroentvb", "url": "https://github.com/jeroentvb" }]
+    "authors": [{ "name": "jeroentvb", "url": "https://github.com/jeroentvb" }],
+    "branch": "dist"
 }
