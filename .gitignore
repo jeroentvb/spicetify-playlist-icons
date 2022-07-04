@@ -145,3 +145,4 @@ out
 
 src/temp
 .DS_Store
+dist/
