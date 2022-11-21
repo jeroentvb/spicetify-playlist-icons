@@ -5,7 +5,7 @@ Small and big icons setting available.
 ![playlist icons big](./docs/playlist-icons-big.png)
 
 ## Installation
-Install via [spicetify-marketplace](https://github.com/CharlieS1103/spicetify-marketplace)
+Install via [spicetify-marketplace](https://github.com/CharlieS1103/spicetify-marketplace).
 
 Or the manual way:  
 Copy `playlist-icons.js` (from the [dist](https://github.com/jeroentvb/spicetify-playlist-icons/tree/dist) branch) to the spicetify extensions folder
