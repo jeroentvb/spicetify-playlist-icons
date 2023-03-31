@@ -39,6 +39,30 @@
     }
 }
 
+.add-to-playlist-item {
+    display: flex;
+    align-items: center;
+
+    &:hover {
+        background-color: rgba(var(--spice-rgb-selected-row),.1);
+    }
+
+    &__img, &__folder {
+        width: 2.25rem;
+        padding-left: 12px;
+    }
+
+    &> button {
+        &:hover {
+            background-color: unset;
+        }
+
+        &[aria-expanded="true"] {
+            background-color: unset;
+        }
+    }
+}
+
 .big-icons {
     .playlist-item {
         padding-top: var(---playlist-img-spacing);

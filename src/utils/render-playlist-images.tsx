@@ -1,9 +1,7 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
 import createPlaylistIconElement from './create-img';
 import getPlaylistAnchors from './get-playlist-links';
 
-import FolderImage from '../components/FolderImage';
+import { renderFolderIcon } from './render-folder-icon';
 
 const imgMap = new Map<string, HTMLImageElement | HTMLDivElement>();
 
@@ -25,7 +23,7 @@ export async function renderPlaylistImages(items: SpotifyApi.PlaylistObjectSimpl
       switch (type) {
          case 'playlist': {
             const playlistData = items.find(playlist => playlist.id === id);
-            const img = createPlaylistIconElement(playlistData?.images[0]?.url as string || '');
+            const img = createPlaylistIconElement(playlistData?.images[0]?.url as string || '', 'playlist-item__img');
 
             playlistAnchor.parentElement?.prepend(img);
 
@@ -33,12 +31,8 @@ export async function renderPlaylistImages(items: SpotifyApi.PlaylistObjectSimpl
             break;
          }
          case 'folder': {
-            const iconWrapper = document.createElement('div');
-            iconWrapper.classList.add('playlist-item__img', 'folder');
-
-            ReactDOM.render(<FolderImage/>, iconWrapper);
-
-            playlistAnchor.parentElement?.prepend(iconWrapper);
+            if (!playlistAnchor.parentElement) return;
+            const iconWrapper = renderFolderIcon(playlistAnchor.parentElement, 'playlist-item__img', 'folder');
 
             imgMap.set(id, iconWrapper);
             break;

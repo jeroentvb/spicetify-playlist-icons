@@ -2,8 +2,10 @@ import { renderPlaylistImages } from './utils/render-playlist-images';
 import getAllPlaylistData from './utils/get-all-playlists';
 import { getElement } from './utils/get-playlist-links';
 import { LS_BIG_ICONS_KEY } from './constants';
+import { watchAddToPlaylistMenu } from './utils/add-to-playlist-icons';
 
 import './assets/css/styles.scss';
+import { createMutationObserver } from './utils/create-mutation-observer';
 
 async function main() {
    while (!Spicetify?.Platform || !Spicetify?.CosmosAsync) {
@@ -19,19 +21,15 @@ async function main() {
 
    const playlistElement = await getElement('#spicetify-playlist-list');
 
-   const observer = new MutationObserver(async () => {
-      // Needed to prevent an infinite looooooooooooooooooooooooooooooooooooooooooooooop
-      observer.disconnect();
-      await renderPlaylistImages(playlistData);
-      observer.observe(playlistElement, { childList: true, subtree: true });
-   });
-
    /**
    * Init
    */
-   await renderPlaylistImages(playlistData);
-   observer.observe(playlistElement, { childList: true, subtree: true });
+   renderPlaylistImages(playlistData);
+   createMutationObserver(() => renderPlaylistImages(playlistData));
    if (showBigIcons) playlistElement.classList.add('big-icons');
+
+   // Watch for context menu and add icons to it
+   watchAddToPlaylistMenu(playlistData);
 
    /**
    * Menu item to toggle big icons
