@@ -1,7 +1,7 @@
 {
     "name": "Playlist icons",
     "description": "Add playlist icons to the playlist list",
-    "preview": "docs/playlist-icons-small.png",
+    "preview": "docs/context-menu.png",
     "main": "playlist-icons.js",
     "readme": "README.md",
     "authors": [{ "name": "jeroentvb", "url": "https://github.com/jeroentvb" }],
