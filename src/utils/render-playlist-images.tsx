@@ -9,7 +9,7 @@ export async function renderPlaylistImages(items: SpotifyApi.PlaylistObjectSimpl
    const playlistAnchors = await getPlaylistAnchors();
 
    playlistAnchors.forEach((playlistAnchor) => {
-      const id = playlistAnchor.href.split('/').at(-1)!;
+      const id = playlistAnchor.href.split('/').at(-1) as string;
       const type = playlistAnchor.href.split('/').at(-2);
       const existingImg = imgMap.get(id);
 

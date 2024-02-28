@@ -17,7 +17,7 @@ export function watchAddToPlaylistMenu(playlistData: SpotifyApi.PlaylistObjectSi
                liElement.classList.add('add-to-playlist-item');
 
                createMutationObserver(() => {
-                  const nestedPlaylists = liElement.querySelector<HTMLLIElement>('.main-contextMenu-menu[tabindex="-1"] > div');
+                  const nestedPlaylists = liElement.querySelector<HTMLLIElement>('ul[tabindex="-1"] > div');
                   if (!nestedPlaylists) return;
 
                   renderPlaylistIcons(nestedPlaylists.children);
@@ -38,11 +38,9 @@ export function watchAddToPlaylistMenu(playlistData: SpotifyApi.PlaylistObjectSi
    };
 
    createMutationObserver(() => {
-      const addToPlaylistElement: HTMLDivElement | null = document.querySelector('#context-menu .main-contextMenu-menu[tabindex="-1"] > div');
+      const addToPlaylistElement: HTMLDivElement | null = document.querySelector('#context-menu ul[tabindex="-1"] > div');
       if (!addToPlaylistElement) return;
 
       renderPlaylistIcons(addToPlaylistElement.children);
    });
 }
-
-

@@ -1,7 +1,4 @@
-const data = [];
-
-
-export default async function getAllPlaylistData(url: string, items: SpotifyApi.PlaylistObjectSimplified[] = []): Promise<SpotifyApi.PlaylistObjectSimplified[]> {
+export default async function getAllPlaylistData(url: string): Promise<SpotifyApi.PlaylistObjectSimplified[]> {
    const res: SpotifyApi.ListOfCurrentUsersPlaylistsResponse = await Spicetify.CosmosAsync.get(url);
 
    return [

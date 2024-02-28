@@ -27,12 +27,12 @@ async function main() {
    const initPlaylistWatcher = () => {
       renderPlaylistImages(playlistData);
       observer = createMutationObserver(() => renderPlaylistImages(playlistData));
-   }
+   };
 
    /**
    * Init
    */
-   if (legacyMode) initPlaylistWatcher()
+   if (legacyMode) initPlaylistWatcher();
    if (showBigIcons) playlistElement.classList.add('big-icons');
 
    // Watch for context menu and add icons to it
@@ -47,7 +47,7 @@ async function main() {
          localStorage.setItem(LEGACY_MODE_KEY, JSON.stringify(!legacyMode));
          legacyMode = !legacyMode;
          if (legacyMode) {
-            initPlaylistWatcher()
+            initPlaylistWatcher();
          } else {
             observer?.disconnect();
             observer = undefined;
