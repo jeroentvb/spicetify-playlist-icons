@@ -27,7 +27,7 @@ export function watchAddToPlaylistMenu(playlistData: SpotifyApi.PlaylistObjectSi
 
                if (!playlist) return;
 
-               const img = imgMap.get(playlist.id) ?? createPlaylistIconElement(playlist?.images[0]?.url as string || '', 'add-to-playlist-item__img');
+               const img = imgMap.get(playlist.id) ?? createPlaylistIconElement(playlist?.images?.[0]?.url as string || '', 'add-to-playlist-item__img');
 
                liElement.prepend(img);
                liElement.classList.add('add-to-playlist-item');

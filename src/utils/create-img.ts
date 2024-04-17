@@ -1,4 +1,4 @@
-export default function createPlaylistIconElement(src: string, className: string): HTMLImageElement | HTMLDivElement {
+export default function createPlaylistIconElement(src: string | undefined, className: string): HTMLImageElement | HTMLDivElement {
    const img = document.createElement(src ? 'img' : 'div');
    img.classList.add(className);
 
