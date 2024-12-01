@@ -12,13 +12,21 @@ export default function getPlaylistAnchors(): Promise<HTMLAnchorElement[]> {
 }
 
 export function getElement(selector: string): Promise<Element> {
-   return new Promise(resolve => {
+   let tries = 0;
+
+   return new Promise((resolve, reject) => {
       const elementExists = setInterval(() => {
          const element = document.querySelector(selector);
 
          if (element) {
             clearInterval(elementExists);
             resolve(element);
+         } else {
+            tries++;
+            if (tries > 20) {
+               clearInterval(elementExists);
+               reject(`Element ${selector} not found after 20 tries`);
+            }
          }
       }, 100);
    });
