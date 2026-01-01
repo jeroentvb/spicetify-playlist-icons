@@ -1,10 +1,7 @@
 # Playlist icons
-Spicetify extension to add icons to the 'add to playlist' context menu, and in legacy mode to add the icon of a playlist in front of the playlist the playlist list.  
+Spicetify extension to add icons to the 'add to playlist' context menu.
 
 <img src="./docs/context-menu.png" width="600">
-
-![playlist icons small](./docs/playlist-icons-small.png)
-![playlist icons big](./docs/playlist-icons-big.png)
 
 ## Installation
 Install via [spicetify-marketplace](https://github.com/CharlieS1103/spicetify-marketplace).
@@ -21,3 +18,9 @@ Run the following commands
 spicetify config extensions playlist-icons.js
 spicetify apply
 ```
+
+## Legacy icons
+![playlist icons small](./docs/playlist-icons-small.png)
+![playlist icons big](./docs/playlist-icons-big.png)
+
+Use version [1.0.3](https://github.com/jeroentvb/spicetify-playlist-icons/releases/tag/v1.0.3)
