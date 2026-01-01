@@ -1,18 +1,14 @@
-import getAllPlaylistData from './utils/get-all-playlists';
 import { watchAddToPlaylistMenu } from './utils/add-to-playlist-icons';
 
 import './assets/css/styles.scss';
-import { initLegacyMode } from './utils/init-legacy-mode';
+import { RootFolder } from './types/rootlist-contents.model';
 
 async function main() {
-   while (!Spicetify?.Platform || !Spicetify?.CosmosAsync) {
+   while (!Spicetify?.Platform?.RootlistAPI) {
       await new Promise(resolve => setTimeout(resolve, 100));
    }
 
-   const playlistData = await getAllPlaylistData('https://api.spotify.com/v1/me/playlists?limit=50');
-
-   // Try to init legacy mode
-   initLegacyMode(playlistData);
+   const playlistData = await Spicetify.Platform.RootlistAPI.getContents().then((res: RootFolder) => res.items.filter(item => item.type === 'playlist'));
 
    // Watch for context menu and add icons to it
    watchAddToPlaylistMenu(playlistData);

@@ -1,10 +1,11 @@
+import { Playlist } from '../types/rootlist-contents.model';
 import createPlaylistIconElement from './create-img';
 import { createMutationObserver } from './create-mutation-observer';
 import { renderFolderIcon } from './render-folder-icon';
 
 const imgMap = new Map<string, HTMLImageElement | HTMLDivElement>();
 
-export function watchAddToPlaylistMenu(playlistData: SpotifyApi.PlaylistObjectSimplified[]): void {
+export function watchAddToPlaylistMenu(playlistData: Playlist[]): void {
    const renderPlaylistIcons = (playlistElements: HTMLCollection) => {
       (Array.from(playlistElements) as HTMLLIElement[])
          .filter((liElement) => !liElement.classList.contains('add-to-playlist-item') && !liElement.querySelector('input'))
@@ -27,12 +28,12 @@ export function watchAddToPlaylistMenu(playlistData: SpotifyApi.PlaylistObjectSi
 
                if (!playlist) return;
 
-               const img = imgMap.get(playlist.id) ?? createPlaylistIconElement(playlist?.images?.[0]?.url as string || '', 'add-to-playlist-item__img');
+               const img = imgMap.get(playlist.uri) ?? createPlaylistIconElement(playlist?.images?.[0]?.url as string || '', 'add-to-playlist-item__img');
 
                liElement.prepend(img);
                liElement.classList.add('add-to-playlist-item');
 
-               !imgMap.has(playlist.id) && imgMap.set(playlist.id, img);
+               !imgMap.has(playlist.uri) && imgMap.set(playlist.uri, img);
             }
          });
    };
